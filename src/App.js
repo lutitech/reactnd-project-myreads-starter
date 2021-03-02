@@ -6,12 +6,20 @@ import BookList from './BookList';
 import * as BooksAPI from './BooksAPI'
 
 
+const NoMatchPage = () => {
+  return (
+    <h3>404 - Not found</h3>
+  );
+};
+
 class App extends React.Component {
 
   state = {
     books: [],   
     searchResults: []       
   }
+
+  
 
  componentDidMount() {
      BooksAPI.getAll()
@@ -88,9 +96,6 @@ class App extends React.Component {
       BooksAPI.update(book, shelf)
    }
 
-  
-  
-
   render() {
     return (
       <div className="app">
@@ -104,7 +109,7 @@ class App extends React.Component {
           )
          } 
         /> 
-        
+        <Route component={NoMatchPage} />
        </div> 
     )
   }
